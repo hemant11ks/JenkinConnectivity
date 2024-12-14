@@ -1,0 +1,21 @@
+SSH Implementation:
+
+Prerequisites: Slave node, openssh enable (Client and Server).
+Commands: (one time)
+-> Start ssh server Get-Service -Name sshd | Set-Service -StartupType Automatic
+   Start-Service sshd
+-> Start ssh agent: Get-Service ssh-agent | Set-Service -StartupType Automatic
+   Start-Service ssh-agent
+-> to know username: echo %username%
+-> hostname: hostname
+
+Master Side:
+1. Connect to slave node.
+ssh-keygen -t ed25519
+2. key for connecting: id_ed25519 key
+3. copy id_ed25519.pub key to slave's C://Users/ProgramData/ssh/(admini_keys)
+	copy pub key to any location,
+	slave node, copy that key to C://Users/ProgramData/ssh with filename administrators_authorized_keys
+4. From next connection it will not require password
+
+
